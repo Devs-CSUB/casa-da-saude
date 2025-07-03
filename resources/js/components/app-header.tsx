@@ -11,29 +11,51 @@ import { useInitials } from '@/hooks/use-initials';
 import { cn } from '@/lib/utils';
 import { type BreadcrumbItem, type NavItem, type SharedData } from '@/types';
 import { Link, usePage } from '@inertiajs/react';
-import { BookOpen, Folder, LayoutGrid, Menu, Search } from 'lucide-react';
+import { BookOpen, ChartColumn, ClipboardPlus, Clock, Folder, Gauge, LayoutGrid, Menu, Search, Syringe, Tickets, User, Users } from 'lucide-react';
 import AppLogo from './app-logo';
 import AppLogoIcon from './app-logo-icon';
 
 const mainNavItems: NavItem[] = [
+
     {
-        title: 'Dashboard',
-        url: '/dashboard',
-        icon: LayoutGrid,
+        title: 'Atendimentos',
+        url: '/appointments',
+        icon: Tickets,
     },
+    {
+        title: 'Pacientes',
+        url: '/patients',
+        icon: ClipboardPlus,
+    },
+    {
+        title: 'Agendas',
+        url: '/schedules',
+        icon: Clock,
+    },
+    {
+        title: 'Procedimentos',
+        url: '/procedures',
+        icon: Syringe,
+    },
+    {
+        title: 'Usuários',
+        url: '/users',
+        icon: Users,
+    },
+
 ];
 
 const rightNavItems: NavItem[] = [
-    {
-        title: 'Repository',
-        url: 'https://github.com/laravel/react-starter-kit',
-        icon: Folder,
-    },
-    {
-        title: 'Documentation',
-        url: 'https://laravel.com/docs/starter-kits',
-        icon: BookOpen,
-    },
+    /* {
+         title: 'Repository',
+         url: 'https://github.com/laravel/react-starter-kit',
+         icon: Folder,
+     },
+     {
+         title: 'Documentation',
+         url: 'https://laravel.com/docs/starter-kits',
+         icon: BookOpen,
+     },*/
 ];
 
 const activeItemStyles = 'text-neutral-900 dark:bg-neutral-800 dark:text-neutral-100';
@@ -48,7 +70,7 @@ export function AppHeader({ breadcrumbs = [] }: AppHeaderProps) {
     const getInitials = useInitials();
     return (
         <>
-            <div className="border-sidebar-border/80 border-b">
+            <div className="border-sidebar-border/80 border-b bg-gray-100 dark:bg-black">
                 <div className="mx-auto flex h-16 items-center px-4 md:max-w-7xl">
                     {/* Mobile Menu */}
                     <div className="lg:hidden">
@@ -95,7 +117,7 @@ export function AppHeader({ breadcrumbs = [] }: AppHeaderProps) {
                     </div>
 
                     <Link href="/dashboard" prefetch className="flex items-center space-x-2">
-                        <AppLogo />
+                        <AppLogo className="w-40 dark:brightness-[10000%]" />
                     </Link>
 
                     {/* Desktop Navigation */}
@@ -126,9 +148,9 @@ export function AppHeader({ breadcrumbs = [] }: AppHeaderProps) {
 
                     <div className="ml-auto flex items-center space-x-2">
                         <div className="relative flex items-center space-x-1">
-                            <Button variant="ghost" size="icon" className="group h-9 w-9 cursor-pointer">
+                            {/* <Button variant="ghost" size="icon" className="group h-9 w-9 cursor-pointer">
                                 <Search className="!size-5 opacity-80 group-hover:opacity-100" />
-                            </Button>
+                            </Button> */}
                             <div className="hidden lg:flex">
                                 {rightNavItems.map((item) => (
                                     <TooltipProvider key={item.title} delayDuration={0}>

@@ -68,6 +68,7 @@
   color utility to any element that depends on these defaults.
 */
 @layer base {
+
     *,
     ::after,
     ::before,
@@ -84,7 +85,7 @@
     --card-foreground: oklch(0.145 0 0);
     --popover: oklch(1 0 0);
     --popover-foreground: oklch(0.145 0 0);
-    --primary: oklch(0.205 0 0);
+    --primary: oklch(44% 0.13 24.49);
     --primary-foreground: oklch(0.985 0 0);
     --secondary: oklch(0.97 0 0);
     --secondary-foreground: oklch(0.205 0 0);
@@ -156,4 +157,18 @@
     body {
         @apply bg-background text-foreground;
     }
+}
+
+
+/* react-select */
+.react-select__input {
+    box-shadow: none !important;
+}
+
+.react-select-single__input {
+    box-shadow: none !important;
+}
+
+.react-select-multi__input {
+    box-shadow: none !important;
 }
