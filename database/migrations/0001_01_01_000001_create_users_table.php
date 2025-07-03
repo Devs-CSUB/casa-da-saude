@@ -13,12 +13,18 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('area_id')->nullable()->constrained('areas');
             $table->string('name');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('image_path', 2048)->nullable();
             $table->rememberToken();
             $table->timestamps();
+            $table->softDeletes();
+            $table->datetime('restored_at')->nullable();
+            $table->foreignIdFor(\App\Models\User::class, 'deleted_by')->nullable();
+            $table->foreignIdFor(\App\Models\User::class, 'restored_by')->nullable();
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {
